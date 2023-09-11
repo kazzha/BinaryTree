@@ -1,9 +1,12 @@
 #include <iostream>
 #include "binarytree.h"
+#include "bst.h"
+#include "quadtree.h"
 
 using namespace mytree;
+using namespace BST;
+using namespace quad;
 
-/*
 void BT_Tets()
 {
 	BinaryTree myTree;
@@ -25,9 +28,8 @@ void BT_Tets()
 
 	std::cout << myTree.Sum();
 }
-*/
 
 int main()
 {
-	
+	QTTest();
 }

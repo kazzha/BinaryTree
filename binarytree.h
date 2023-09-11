@@ -3,6 +3,7 @@
 #include <iostream>
 #include <queue>
 #include <stack>
+#include <cmath>
 
 namespace mytree
 {
@@ -169,10 +170,31 @@ namespace mytree
 			return sum;
 
 		}
-		bool Search(int value)
+		bool Search(Node* root, int value)
 		{
-			bool checking = false;
+			if(root == nullptr)
+			{
+				return false;
+			}
+
+			return (root->mData == value) || Search(root->mpLeft, value) || Search(root->mpRight, value);
 		}
+
+		int height(Node* root)
+		{
+			static int level{};
+			if(!root)
+			{
+				return 0;
+			}
+
+			level++;
+			height(root->mpLeft);
+			height(root->mpRight);
+
+			return 1+static_cast<int>(log2(level));
+		}
+
 	};
 
 }

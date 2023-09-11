@@ -35,7 +35,48 @@ namespace BST
 
 		Node* Insert(Node* parent, int data)
 		{
-			//rules
+			if (parent == nullptr)
+			{
+				return CreateNode(data);
+			}
+
+			if (data < parent->mData)
+			{
+				parent->mpLeft = Insert(parent->mpLeft, data);
+			}
+			else if (data > parent->mData)
+			{
+				parent->mpRight = Insert(parent->mpRight, data);
+			}
+
+			return parent;
+		}
+	public:
+		void Visit(Node* node) { std::cout << node->mData << " "; }
+		void InOrder(Node* node)
+		{
+			if (node == nullptr) return;
+
+			InOrder(node->mpLeft);
+			Visit(node);
+			InOrder(node->mpRight);
 		}
 	};
 }
+
+void BSTest()
+{
+	using namespace BST;
+
+	BinarySearchTree bst;
+
+	auto root = bst.Insert(nullptr, 8);
+
+	bst.Insert(root, 3);
+	bst.Insert(root, 10);
+	bst.Insert(root, 1);
+	bst.Insert(root, 6);
+
+	bst.InOrder(root);
+}
+
