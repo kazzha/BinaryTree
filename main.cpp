@@ -2,6 +2,7 @@
 #include "binarytree.h"
 #include "bst.h"
 #include "quadtree.h"
+#include "heap.h"
 
 using namespace mytree;
 using namespace BST;
@@ -31,5 +32,5 @@ void BT_Tets()
 
 int main()
 {
-	QTTest();
+	HeapTest();
 }
