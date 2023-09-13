@@ -136,6 +136,7 @@
     </ClInclude>
     <ClInclude Include="bst.h" />
     <ClInclude Include="heap.h" />
+    <ClInclude Include="inheritance.h" />
     <ClInclude Include="quadtree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

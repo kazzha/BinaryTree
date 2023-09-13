@@ -61,6 +61,40 @@ namespace BST
 			Visit(node);
 			InOrder(node->mpRight);
 		}
+		Node* Find(Node* node, int data)
+		{
+			if (node == nullptr) { return; }
+
+			Find(node->mpLeft, data);
+			if (node->mData == data)
+			{
+				std::cout << node->mData;
+				return node;
+			}
+			
+			Find(node->mpRight, data);
+		}
+
+		void Erase(Node* node, int data)
+		{
+			auto result = Find(node, data);
+			if (result->mpLeft == nullptr && result->mpRight == nullptr)
+			{
+				delete result;
+			}
+			else if (result->mpLeft != nullptr && result->mpRight != nullptr)
+			{
+
+			}
+			else if (result->mpLeft != nullptr && result->mpRight == nullptr)
+			{
+
+			}
+			else
+			{
+
+			}
+		}
 	};
 }
 
@@ -77,6 +111,6 @@ void BSTest()
 	bst.Insert(root, 1);
 	bst.Insert(root, 6);
 
-	bst.InOrder(root);
+	bst.Find(root, 10);
 }
 

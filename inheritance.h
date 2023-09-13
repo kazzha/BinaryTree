@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Practice
+namespace practice
 {
 	struct Node
 	{
@@ -16,12 +16,14 @@ namespace Practice
 		}
 	};
 
-	class BST : public Node
+	class BSTI : public Node
 	{
 	public:
-		BST() : Node()
+		BSTI(int data = 0, Node* right = nullptr, Node* left = nullptr)
 		{
-			
+			mData = data;
+			mRight = right;
+			mLeft = left;
 		}
 
 		Node* CreateNode(int data = 0, Node* right = nullptr, Node* left = nullptr)
@@ -44,6 +46,10 @@ namespace Practice
 			{
 				root->mRight = Insert(root->mRight, data);
 			}
+		}
+		void Visit()
+		{
+			std::cout << mData;
 		}
 	};
 }

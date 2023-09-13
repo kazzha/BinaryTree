@@ -3,10 +3,12 @@
 #include "bst.h"
 #include "quadtree.h"
 #include "heap.h"
+#include "inheritance.h"
 
 using namespace mytree;
 using namespace BST;
 using namespace quad;
+using namespace practice;
 
 void BT_Tets()
 {
@@ -32,5 +34,5 @@ void BT_Tets()
 
 int main()
 {
-	HeapTest();
+	BSTest();
 }
