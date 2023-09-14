@@ -63,36 +63,68 @@ namespace BST
 		}
 		Node* Find(Node* node, int data)
 		{
-			if (node == nullptr) { return; }
+			if (node == nullptr) { return nullptr; }
 
-			Find(node->mpLeft, data);
-			if (node->mData == data)
+			if (data < node->mData) {
+                Find(node->mpLeft, data);
+
+			}
+			
+			else if (node->mData == data)
 			{
 				std::cout << node->mData;
 				return node;
 			}
 			
-			Find(node->mpRight, data);
+			if (data > node->mData) {
+				Find(node->mpRight, data);
+			}
 		}
 
-		void Erase(Node* node, int data)
+		void Erase(Node* &node, int data)
 		{
-			auto result = Find(node, data);
-			if (result->mpLeft == nullptr && result->mpRight == nullptr)
+			if (node == nullptr)
 			{
-				delete result;
+				return;
 			}
-			else if (result->mpLeft != nullptr && result->mpRight != nullptr)
+			if (data < node->mData) {
+				Erase(node->mpLeft, data);
+			}
+			else if (data > node->mData)
 			{
+				Erase(node->mpRight, data);
+			}
+
+			else {
+			if (node->mpLeft == nullptr && node->mpRight == nullptr)
+			{
+				delete node;
+				node = nullptr;
+			}
+			else if (node->mpLeft != nullptr && node->mpRight != nullptr)
+			{
+				auto temp = node->mpLeft;
+				while (temp->mpRight != nullptr)
+				{
+					temp = temp->mpRight;
+				}
+				temp->mpRight = node->mpRight;
+				delete node;
+				node = nullptr;
+			}
+			else {
+				Node* temp = node;
+				if (temp->mpLeft != nullptr)
+				{
+					node = node->mpLeft;
+				}
+				else if (temp->mpRight != nullptr)
+				{
+					node = node->mpRight;
+				}
+				delete temp;
 
 			}
-			else if (result->mpLeft != nullptr && result->mpRight == nullptr)
-			{
-
-			}
-			else
-			{
-
 			}
 		}
 	};
@@ -112,5 +144,8 @@ void BSTest()
 	bst.Insert(root, 6);
 
 	bst.Find(root, 10);
+	bst.Erase(root, 6);
+	bst.Erase(root, 1);
+	bst.InOrder(root);
 }
 
