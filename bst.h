@@ -66,7 +66,7 @@ namespace BST
 			if (node == nullptr) { return nullptr; }
 
 			if (data < node->mData) {
-                Find(node->mpLeft, data);
+               return Find(node->mpLeft, data);
 
 			}
 			
@@ -76,8 +76,8 @@ namespace BST
 				return node;
 			}
 			
-			if (data > node->mData) {
-				Find(node->mpRight, data);
+			else if (data > node->mData) {
+				return Find(node->mpRight, data);
 			}
 		}
 
@@ -144,8 +144,7 @@ void BSTest()
 	bst.Insert(root, 6);
 
 	bst.Find(root, 10);
-	bst.Erase(root, 6);
-	bst.Erase(root, 1);
+	bst.Find(root, 6);
 	bst.InOrder(root);
 }
 
